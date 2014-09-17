@@ -39,9 +39,12 @@ module.exports = (robot) ->
         if not robot.brain.data[user]
             robot.brain.data[user] = []
 
+        d = new Date()
+        d.setTime(d.getTime() + (540 * 60 * 1000))
+
         robot.brain.data[user].push({
             record: msg.match[1],
-            date: new Date(),
+            date: d,
         })
 
         robot.brain.save()
